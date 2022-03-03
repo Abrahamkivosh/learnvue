@@ -16,24 +16,41 @@
   <body>
       <div id="app" class="container" v-cloak >
           <h1> {{message}} </h1>
-          <div> {{ fullName() }} </div>
+          <div> {{ fullName }} </div>
+          <div> {{ typeof total }} {{ total}} </div>
           <div>
               <a :href="url" v-text="url" ></a>
               <div v-text="rawhtml" ></div>
               <div v-html="rawhtml" ></div>
           </div>
           <hr />
-          <form action="" method="post">
-              <div class="form-group">
+
+          <form action="" @submit.prevent="calculate" class="row" method="post">
+            <div class="form-group col-6">
+              <label for="num1">First Number</label>
+              <input type="number"
+                class="form-control" name="num1" v-model="num1" id="num1" >
+            </div>
+            <div class="form-group col-6">
+              <label for="num2">Second Number</label>
+              <input type="number"
+                class="form-control" name="num2" v-model="num2" id="num2" >
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </form>
+
+          <form class="row" @submit.prevent ="submitform('The form can not be submitted yet!!',$event)" action="" method="post">
+              <div class="form-group col-md-6 ">
                   
                   <label for="firstname">First Name</label>
                   <input id="firstname" v-model="firstName" class="form-control" type="text" name="firstname">
               </div>
-              <div class="form-group">
+              <div class="form-group col-md-6 ">
                   <label for="lastname">Text</label>
-                  <input id="lastname" class="form-control" type="text" :value="lastName" @input="updateLastName('Hello the last name',$event)" name="lastname">
+                  <input id="lastname" class="form-control" type="text" :value="lastName" @input.prevent.lazy="updateLastName('Hello the last name',$event)" name="lastname">
                   <span>Last Name Length <span class="text text-primary" v-text="lastNameLength" >  </span> </span>
               </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>
     <!-- Optional JavaScript -->
