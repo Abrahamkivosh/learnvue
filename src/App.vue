@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <nav-bar />
+  <div class="container">
+  <todos-index />
+  </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/NavBar.vue'
+import TodosIndex from './components/Todos/TodosIndex.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavBar,
+    TodosIndex
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #e8f7fa;
+}
+.container{
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
 }
 </style>
