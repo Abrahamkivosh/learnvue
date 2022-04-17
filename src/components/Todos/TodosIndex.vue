@@ -7,15 +7,21 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
       
     }
   },
+  created() {
+    this.fetchTodos()
+  },
   computed: {
     ...mapGetters(['allTodos'])
+  },
+  methods: {
+    ...mapActions(['fetchTodos'])
   },
 
 }
