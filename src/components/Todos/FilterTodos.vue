@@ -1,7 +1,7 @@
 <template>
       <div class="form-group">
         <label for="limit">Filter Todos</label>
-        <select class="form-control " v-model="limit" name="limit" id="limit">
+        <select class="form-control " v-model="limit" name="limit" id="limit" @change="selectedFilter()" >
             <option selected disabled value="" >Select Filter</option>
           <option value="200">200</option>
           <option value="100">100</option>
@@ -11,18 +11,24 @@
           <option value="5">5</option>
          
         </select>
-        <h2> {{ Numbers }} </h2>
       </div>
 
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     name:"FilterTodos",
     data() {
         return {
             limit :0
         }
+    },
+    methods: {
+        ...mapActions(['filterTodos']),
+       selectedFilter(){
+           this.filterTodos( parseInt(this.limit) )
+       }
     },
     
 
@@ -31,7 +37,7 @@ export default {
 
 <style scoped >
 .form-group{
-    position: absolute;
+    /* position: absolute; */
     display: flex;
 }
 .form-group label{
@@ -42,8 +48,8 @@ export default {
 }
 .form-group .form-control {
     display: initial;
-    width: 10rem;
     border: none;
+    padding: 10px 20px;
     background:  #41b883;
     border-radius: 10px;
 

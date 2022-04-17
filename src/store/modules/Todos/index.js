@@ -43,6 +43,13 @@ const actions = {
             console.log(err)
             alert("error : " + err)
         });
+    },
+    filterTodos({ commit }, limit) {
+        axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`).then((result) => {
+            commit('setTodos', result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
     }
 
 
