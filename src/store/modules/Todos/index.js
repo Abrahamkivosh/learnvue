@@ -9,7 +9,9 @@ const getters = {
 
 }
 const mutations = {
-    setTodos: (state, todos) => state.todos = todos
+    setTodos: (state, todos) => state.todos = todos,
+    addNewTodo: (state, todo) => state.todos.unshift(todo)
+
 }
 const actions = {
     fetchTodos({ commit }) {
@@ -18,7 +20,14 @@ const actions = {
         }).catch((err) => {
             console.log(err)
         });
-
+    },
+    addTodo({ commit }, todo) {
+        axios.post('https://jsonplaceholder.typicode.com/todos', todo).then((result) => {
+            commit("addNewTodo", todo)
+            console.log(result)
+        }).catch((err) => {
+            console.log(err)
+        });
     }
 
 

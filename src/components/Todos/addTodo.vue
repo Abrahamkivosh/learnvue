@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -16,11 +16,16 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['addTodo']),
         onSubmit(){
         if ( this.title == "") {
             alert("Please type title")
         }
-      
+        let sendData = {
+            title:this.title
+        }
+        this.addTodo(sendData)
+      this.title = ""
     }
     },
     computed: {

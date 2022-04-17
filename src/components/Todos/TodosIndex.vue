@@ -1,7 +1,13 @@
 <template>
   <div>
       <div class="todos">
-        <div class="todo" v-for="(todo,index) in allTodos" :key="index" v-text="todo.title" ></div>
+        <div class="todo" v-for="(todo,index) in allTodos" :key="index"  >
+          <span v-text="todo.title">
+
+          </span>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <!-- <i class="fa-solid fa-trash-list"></i> -->
+        </div>
       </div>
   </div>
 </template>
