@@ -2,6 +2,7 @@
   <nav-bar />
   <div class="container">
     <add-todo />
+    <filter-todos />
   <todos-index />
   </div>
   
@@ -10,6 +11,7 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import AddTodo from './components/Todos/addTodo.vue'
+import FilterTodos from './components/Todos/FilterTodos.vue'
 import TodosIndex from './components/Todos/TodosIndex.vue'
 
 export default {
@@ -17,7 +19,8 @@ export default {
   components: {
     NavBar,
     TodosIndex,
-    AddTodo
+    AddTodo,
+    FilterTodos
   }
 }
 </script>
