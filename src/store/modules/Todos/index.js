@@ -10,7 +10,13 @@ const getters = {
 }
 const mutations = {
     setTodos: (state, todos) => state.todos = todos,
-    addNewTodo: (state, todo) => state.todos.unshift(todo)
+    addNewTodo: (state, todo) => state.todos.unshift(todo),
+    removeTodo(state, id) {
+        let index = "";
+        index = state.todos.findIndex(el => el.id == id);
+        state.todos.splice(index, 1)
+            // state.todos = state.todos.filter(todo => todo.id =! id)
+    }
 
 }
 const actions = {
@@ -27,6 +33,15 @@ const actions = {
             console.log(result)
         }).catch((err) => {
             console.log(err)
+        });
+    },
+    deleteTodo({ commit }, id) {
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(() => {
+            commit("removeTodo", id)
+
+        }).catch((err) => {
+            console.log(err)
+            alert("error : " + err)
         });
     }
 

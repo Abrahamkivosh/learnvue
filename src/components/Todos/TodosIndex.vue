@@ -1,12 +1,14 @@
 <template>
   <div>
       <div class="todos">
-        <div class="todo" v-for="(todo,index) in allTodos" :key="index"  >
+        <div class="todo" v-for="(todo,index) in allTodos" :key="index" >
           <span v-text="todo.title">
 
           </span>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <!-- <i class="fa-solid fa-trash-list"></i> -->
+          <span  @click.prevent="deleteTodo(todo.id)" >
+ <i class="fa fa-trash trashIcon " aria-hidden="true"  ></i>
+          </span>
+         
         </div>
       </div>
   </div>
@@ -27,7 +29,8 @@ export default {
     ...mapGetters(['allTodos'])
   },
   methods: {
-    ...mapActions(['fetchTodos'])
+    ...mapActions(['fetchTodos','deleteTodo'])
+  
   },
 
 }
@@ -46,5 +49,19 @@ export default {
   border-radius: 5px;
   text-align: center;
   position: relative;
+}
+.trashIcon{
+  right: 10px;
+  bottom: 10px;
+  color: red;
+  font-size: 15px;
+  cursor: pointer;
+  position: absolute;
+}
+.trashIcon:hover{
+  font-size: 20px;
+  border: 2px dotted #41b883;
+  padding: 0px;
+  border-radius: 5px;
 }
 </style>
