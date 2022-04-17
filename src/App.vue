@@ -1,9 +1,15 @@
 <template>
   <span>
     <div class="nav-bar"></div>
-
     <div class="cart" > cart ({{ cart }})</div>
+    <div class="all-products" >
+ <product-details :premium="premium" />
     <product-details :premium="premium" />
+    </div>
+
+    
+
+   
     
   </span>
 </template>
@@ -24,4 +30,9 @@ export default {
 
 <style>
 @import url("@/assets/styles.css");
+.all-products{
+  height: 495px;
+  position: absolute;
+  overflow-y: auto;
+}
 </style>

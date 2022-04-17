@@ -13,13 +13,16 @@
         <ul v-for="(detail, index) in details" :key="index">
           <li v-text="detail"></li>
         </ul>
-        <div
+        <div class="variants" >
+ <div
           v-for="(variant, index) in variants"
           :key="index"
-          class="color-circle"
+          class="color-circle "
           :style="{ backgroundColor: variant.color, cursor: 'pointer' }"
           @mouseover="updateVariant(index)"
         ></div>
+        </div>
+       
         <button
           class="button"
           @click="addToCart()"
