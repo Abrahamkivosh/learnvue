@@ -1,6 +1,7 @@
 <template>
   <nav-bar />
   <div class="container">
+    <add-todo />
   <todos-index />
   </div>
   
@@ -8,13 +9,15 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+import AddTodo from './components/Todos/addTodo.vue'
 import TodosIndex from './components/Todos/TodosIndex.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    TodosIndex
+    TodosIndex,
+    AddTodo
   }
 }
 </script>
