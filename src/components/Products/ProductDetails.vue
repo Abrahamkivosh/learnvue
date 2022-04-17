@@ -71,6 +71,8 @@ export default {
   methods: {
     addToCart() {
       this.cart += 1;
+      this.$emit('addToCart',this.variants[this.selectedVariant].id )
+      
     },
     updateVariant(index) {
       this.selectedVariant = index;

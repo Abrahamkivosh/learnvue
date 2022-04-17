@@ -1,9 +1,9 @@
 <template>
   <span>
     <div class="nav-bar"></div>
-    <div class="cart" > cart ({{ cart }})</div>
+    <div class="cart" > cart ({{ calculateItemsInCart }})</div>
     <div class="all-products" >
- <product-details :premium="premium" />
+ <product-details :premium="premium" @add-to-cart="updateCart"  />
     <product-details :premium="premium" />
     </div>
 
@@ -21,10 +21,20 @@ export default {
   components: {ProductDetails},
   data() {
     return {
-      cart:0,
+      cart:[],
       premium:true
     };
-  }
+  },
+  methods: {
+    updateCart(productId){
+      this.cart.push(productId)
+    }
+  },
+  computed: {
+    calculateItemsInCart(){
+      return this.cart.length
+    }
+  },
 };
 </script>
 
